@@ -14,7 +14,7 @@ setup(
     url='https://github.com/RenathaPutri/tictactoe-gemini-ai',
     license='MIT',
     author='Renatha Putri',
-    author_email='queennatha444@gmail.com',
+    author_email='renathaputri72@gmail.com',
     description='This package contains implementation of a command-line Tic-Tac-Toe game with Google Gemini AI integrated into it.',
     long_description=readme(),
     long_description_content_type="text/markdown",
