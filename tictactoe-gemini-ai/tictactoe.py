@@ -1,11 +1,26 @@
+"""
+This file contains code for the game "Tic-Tac-Toe Gemini AI".
+
+Authors:
+1. Renatha Putri
+2. SoftwareApkDev
+"""
+
+
+# Importing necessary libraries
+
+
 import json
+import os
 import random
 import time
 import google.generativeai as genai
 from colorama import Fore, Style
+from dotenv import load_dotenv
 
-# Configure Gemini AI API Key
-genai.configure(api_key="")
+
+# Creating static functions to be used in this game.
+
 
 def print_board(board):
     print(Fore.CYAN + "\n Tic-Tac-Toe Board")
@@ -37,19 +52,19 @@ def ai_move(board, difficulty):
 
 def save_score(result):
     try:
-        with open("score.json", "r") as file:
+        with open("../score.json", "r") as file:
             scores = json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):
         scores = {"Wins": 0, "Losses": 0, "Draws": 0}
     
     scores[result] += 1
     
-    with open("score.json", "w") as file:
+    with open("../score.json", "w") as file:
         json.dump(scores, file)
 
 def load_score():
     try:
-        with open("score.json", "r") as file:
+        with open("../score.json", "r") as file:
             return json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):
         return {"Wins": 0, "Losses": 0, "Draws": 0}
@@ -126,8 +141,16 @@ def play_game():
     print(Fore.BLUE + "It's a draw!" + Style.RESET_ALL)
     save_score("Draws")
 
+
+# Creating main function used to run the game.
+
 def main():
     print("Welcome to Tic-Tac-Toe!")
+
+    # Configure Gemini AI API Key
+    load_dotenv()
+    genai.configure(api_key=os.environ['GEMINI_API_KEY'])
+
     while True:
         play_game()
         scores = load_score()

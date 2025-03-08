@@ -35,7 +35,7 @@ pip install -r requirements.txt
   
 3️⃣ **Run the game**  
 ```sh
-python tictactoe.py
+python tictactoe-gemini-ai/tictactoe.py
 ```
 
 ---
